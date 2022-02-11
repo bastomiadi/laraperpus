@@ -17,8 +17,8 @@ composer install
 copy atau rubah file env.example menjadi .env dan masukan nama database pada DB_DATABASE= setelah itu ketikkan pada terminal perintah di bawah ini.
 
 ```sh
-php artisan migrate
 php artisan key:generate
+php artisan migrate
 php artisan db:seed
 ```
 
