@@ -1,6 +1,6 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
+        <div class="container">
             <a class="navbar-brand" href="#">Laraperpus</a>
             <button
                 class="navbar-toggler"
@@ -38,6 +38,7 @@
             </div>
         </div>
     </nav>
+    <slot />
 </template>
 <script setup>
 import { Link } from "@inertiajs/inertia-vue3";
