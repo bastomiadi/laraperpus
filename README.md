@@ -22,9 +22,10 @@ php artisan migrate
 php artisan db:seed
 ```
 
-| Tools      | Readme                    |
-| ---------- | ------------------------- |
-| Laravel    | https://laravel.com/      |
-| VueJs      | https://vuejs.org/        |
-| Inertia Js | https://inertiajs.com/    |
-| Bootstrap  | https://getbootstrap.com/ |
+| Tools      | Readme                            |
+| ---------- | --------------------------------- |
+| Laravel    | https://laravel.com/              |
+| VueJs      | https://vuejs.org/                |
+| Inertia Js | https://inertiajs.com/            |
+| Bootstrap  | https://getbootstrap.com/         |
+| AOS        | https://michalsnik.github.io/aos/ |

@@ -1,26 +1,54 @@
+.navbar-home {
+    border-bottom: 0.5px solid $secondary;
+    .navbar-brand {
+        font-weight: map-get($font-weight, bold);
+        letter-spacing: 1px;
+        font-size: 24px;
+    }
+}
 header {
+    background-color: $primary;
+    color: $white;
     .bener-title {
         position: relative;
         align-items: center;
         top: 40%;
-        h3 {
+        h1 {
             font-weight: map-get($font-weight, bold);
         }
     }
     .img-bener {
         margin-top: 20px;
+        margin-bottom: 10px;
         background-size: cover;
         width: 100%;
         min-height: 150px;
         object-fit: cover;
         object-position: center;
         vertical-align: middle;
-        border-radius: 50px 50px 50px 2px;
+        border-radius: 80px 80px 80px 1px;
     }
 }
-.section-home {
+.section-brand {
     background-color: $secondary;
-    margin-top: 20px;
-    padding: 10px;
     color: $white;
+    min-height: 100px;
+    position: static;
+    display: flex;
+    align-items: center;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+.footer {
+    min-height: 135px;
+    background-color: $primary;
+    position: static;
+    display: flex;
+    align-items: center;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
 }

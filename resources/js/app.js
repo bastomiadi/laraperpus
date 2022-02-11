@@ -4,6 +4,8 @@ import { createApp, h } from "vue";
 import { createInertiaApp } from "@inertiajs/inertia-vue3";
 import { InertiaProgress } from "@inertiajs/progress";
 import VueFeather from "vue-feather";
+import "../../node_modules/aos/dist/aos.css";
+import AOS from "aos";
 
 const appName =
     window.document.getElementsByTagName("title")[0]?.innerText || "Laravel";
@@ -19,5 +21,5 @@ createInertiaApp({
             .mount(el);
     },
 });
-
-InertiaProgress.init({ color: "#4B5563" });
+AOS.init();
+InertiaProgress.init({ color: "#ffc107" });

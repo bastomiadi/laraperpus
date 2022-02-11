@@ -76,6 +76,7 @@ const submit = () => {
                     Log in
                 </BreezeButton>
             </div>
+            <Link :href="route('home')"> Home </Link>
         </form>
     </BreezeGuestLayout>
 </template>

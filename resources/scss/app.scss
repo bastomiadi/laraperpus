@@ -3,18 +3,4 @@
 @import "variables";
 @import "home";
 @import "dasbor";
-:-webkit-scrollbar {
-    width: 10px;
-}
-::-webkit-scrollbar-track {
-    background-color: $primary;
-    border-radius: 50px;
-}
-::-webkit-scrollbar-thumb {
-    background-color: $white;
-    border-radius: 50px;
-}
-::-webkit-scrollbar-button {
-    background-color: $white;
-}
 @import "~bootstrap/scss/bootstrap";
