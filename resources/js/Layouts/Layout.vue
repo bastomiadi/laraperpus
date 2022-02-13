@@ -4,8 +4,8 @@
             class="navbar navbar-expand-lg navbar-dark bg-primary navbar-home sticky-top"
         >
             <div class="container">
-                <Link class="navbar-brand" :href="route('home')"
-                    >Laraperpus</Link
+                <NavLink class="navbar-brand" :href="route('home')"
+                    >Laraperpus</NavLink
                 >
                 <button
                     class="navbar-toggler"
@@ -21,32 +21,44 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <Link
-                                class="nav-link"
+                            <NavLink
                                 aria-current="page"
                                 :href="route('home')"
-                                >Home</Link
+                                :active="route().current('home')"
+                                >Home</NavLink
                             >
                         </li>
                         <li class="nav-item">
-                            <Link
-                                class="nav-link"
+                            <NavLink
+                                :href="route('catalog.book')"
+                                :active="route().current('catalog.book')"
+                                >Catalog Book</NavLink
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <NavLink
                                 :href="route('faq')"
-                                :class="{
-                                    'active-class':
-                                        route().current('faq') === 'faq',
-                                }"
-                                >FAQ</Link
+                                :active="route().current('faq')"
+                                >FAQ</NavLink
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <NavLink
+                                :href="route('dashboard')"
+                                :active="route().current('dashboard')"
+                                v-if="$page.props.auth.user"
+                                >Dashboard</NavLink
                             >
                         </li>
                     </ul>
                     <div class="px-3">
-                        <Link
+                        <NavLink
                             :href="route('login')"
                             class="btn bg-white bg-gradient border-0 shadow rounded-3"
+                            v-if="!$page.props.auth.user"
                         >
                             <vue-feather type="log-in"></vue-feather>
-                            Login</Link
+                            Login</NavLink
                         >
                     </div>
                 </div>
@@ -61,10 +73,10 @@
     </div>
 </template>
 <script>
-import { Link } from "@inertiajs/inertia-vue3";
+import NavLink from "@/Components/NavLink.vue";
 export default {
     components: {
-        Link,
+        NavLink,
     },
 };
 </script>

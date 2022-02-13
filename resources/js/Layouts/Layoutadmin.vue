@@ -1,13 +1,16 @@
 <script setup>
-import { Link } from "@inertiajs/inertia-vue3";
+import BreezeResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
+import NavLink from "@/Components/NavLink.vue";
 </script>
 <template>
     <div>
         <header
-            class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow"
+            class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow-sm"
         >
-            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#"
-                >Laraperpus</a
+            <NavLink
+                class="navbar-brand col-md-3 col-lg-2 me-0 px-3"
+                :href="route('home')"
+                >Laraperpus</NavLink
             >
             <button
                 class="navbar-toggler position-absolute d-md-none collapsed"
@@ -20,11 +23,6 @@ import { Link } from "@inertiajs/inertia-vue3";
             >
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="navbar-nav">
-                <div class="nav-item text-nowrap">
-                    <a class="nav-link px-3" href="#">Sign out</a>
-                </div>
-            </div>
         </header>
         <div class="container-fluid">
             <div class="row">
@@ -46,8 +44,14 @@ import { Link } from "@inertiajs/inertia-vue3";
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">
-                                    <span data-feather="file"></span>
-                                    Orders
+                                    <vue-feather type="book"></vue-feather>
+                                    Category Books
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <vue-feather type="book"></vue-feather>
+                                    Books
                                 </a>
                             </li>
                         </ul>
@@ -72,16 +76,15 @@ import { Link } from "@inertiajs/inertia-vue3";
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <Link
+                                <BreezeResponsiveNavLink
                                     class="nav-link"
                                     :href="route('logout')"
                                     method="post"
                                     as="button"
-                                    type="button"
                                 >
                                     <vue-feather type="log-out"></vue-feather>
                                     Logout
-                                </Link>
+                                </BreezeResponsiveNavLink>
                             </li>
                         </ul>
                     </div>

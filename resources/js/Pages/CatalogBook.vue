@@ -1,59 +1,37 @@
 <template>
-    <Head title="Home" />
+    <Head title="Catalog Book" />
     <Layout>
-        <header>
+        <section class="section-home mt-5">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="bener-title">
-                            <h1 class="h1 mb-3">Laraperpus</h1>
-                            <div class="h5 mb-2">Get Your New</div>
-                            <div class="text-warning h3 mb-3 book-collection">
-                                <strong>Book</strong> Collection
+                <div class="row justify-content-center mb-3 text-center">
+                    <div class="col-md-10">
+                        <div class="mb-3 py-4">
+                            <div class="mt-5 mb-2 h1 text-primary">
+                                Catalog
+                                <strong class="border-bottom">Book</strong>
                             </div>
-                            <p>
+                            <p class="text-primary text-wrap">
                                 Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Maxime eligendi repellendus
-                                amet tempore laborum quidem, consectetur in
-                                numquam fugit porro?
+                                adipisicing elit. Odit, ad vel eum non quis ipsa
+                                autem modi blanditiis voluptatum dolorem,
+                                distinctio adipisci voluptas, laborum
+                                perspiciatis quia vitae labore accusamus
+                                nesciunt.
                             </p>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <img
-                            :src="imgc"
-                            class="img-bener img-fluid d-none d-md-block"
-                        />
-                    </div>
-                </div>
-            </div>
-        </header>
-        <section class="section-brand">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing
-                            elit. Totam dolorem enim animi nobis voluptate
-                            consectetur voluptatem deserunt vero eligendi
-                            adipisci.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section-home mt-4">
-            <div class="container">
-                <div class="row mb-4 mt-5">
-                    <div class="col-md-12" data-aos="fade-up">
-                        <div class="h3 fs-2 text-bold text-primary">
-                            Catalog <strong>Books</strong>
-                        </div>
+                        <a
+                            href="#"
+                            class="btn btn-primary border-0 me-2 mb-2"
+                            v-for="catalog in catalogs"
+                            :key="catalog.id"
+                            >{{ catalog.name }}</a
+                        >
+                        <hr class="border-top-1 border-primary" />
                     </div>
                 </div>
                 <div class="row">
                     <div
-                        class="col-md-4 mb-3"
+                        class="col-md-4 mb-4"
                         v-for="book in books"
                         :key="book.id"
                         data-aos="fade-up"
@@ -78,10 +56,29 @@
                         </Link>
                     </div>
                 </div>
-                <a href="#" class="btn btn-primary bg-gradient border-0"
-                    >Load more
-                    <vue-feather type="arrow-right-circle"></vue-feather
-                ></a>
+                <nav aria-label="Page navigation example" class="mt-5">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </section>
     </Layout>
@@ -92,7 +89,24 @@ import Layout from "@/Layouts/Layout.vue";
 export default {
     data() {
         return {
-            imgc: "https://source.unsplash.com/600x300",
+            catalogs: [
+                {
+                    id: 1,
+                    name: "PHP Dasar",
+                },
+                {
+                    id: 2,
+                    name: "Laravel",
+                },
+                {
+                    id: 3,
+                    name: "Javascript",
+                },
+                {
+                    id: 4,
+                    name: "NodeJs",
+                },
+            ],
             books: [
                 {
                     id: "1",
@@ -100,7 +114,7 @@ export default {
                     name: "Pemograman Web Dasar dengan PHP",
                     judul: "Pemograman Web Dasar dengan PHP",
                     harga: "50000",
-                    image: "https://source.unsplash.com/digital/600x300",
+                    image: "https://source.unsplash.com/books/600x300",
                 },
                 {
                     id: "2",

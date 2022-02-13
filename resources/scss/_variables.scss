@@ -2,11 +2,13 @@ $primary: #04082c;
 $white: #ffffff;
 $secondary: #828ea5;
 $gray: #f8f9fd;
+$yellow: #ffc107;
 $custom-colors: (
     "primary": $primary,
     "white": $white,
     "secondary": $secondary,
     "gray": $gray,
+    "warning": $yellow,
 );
 $font-weight: (
     "light": 200,
