@@ -17,3 +17,12 @@ $font-weight: (
     "semibold": 600,
     "bold": 700,
 );
+
+$breadcrumb-bg: $gray;
+$breadcrumb-padding-y: 10px;
+$breadcrumb-padding-x: 10px;
+$breadcrumb-divider-color: $primary;
+$breadcrumb-divider: quote("/");
+$breadcrumb-font-size: null;
+$breadcrumb-item-padding-x: 0.2rem;
+$breadcrumb-border-radius: 10px;

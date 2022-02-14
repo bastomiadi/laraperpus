@@ -52,13 +52,12 @@
                         </li>
                     </ul>
                     <div class="px-3">
-                        <NavLink
+                        <LinkBtn
                             :href="route('login')"
-                            class="btn bg-white bg-gradient border-0 shadow rounded-3"
                             v-if="!$page.props.auth.user"
                         >
                             <vue-feather type="log-in"></vue-feather>
-                            Login</NavLink
+                            Login</LinkBtn
                         >
                     </div>
                 </div>
@@ -74,9 +73,11 @@
 </template>
 <script>
 import NavLink from "@/Components/NavLink.vue";
+import LinkBtn from "@/Components/LinkBtn.vue";
 export default {
     components: {
         NavLink,
+        LinkBtn,
     },
 };
 </script>

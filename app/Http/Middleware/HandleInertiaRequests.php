@@ -41,8 +41,12 @@ class HandleInertiaRequests extends Middleware
             'is_admin' => fn () => $request->user()
                 ? $request->user()->only('role')
                 : null,
-            // 'canLogin' => fn () => Route::has('login') ? Route::has('login') : false,
-            // 'canRegister' => fn () => Route::has('register') ? Route::has('register') : null,
+            'flash' => function () use ($request) {
+                return [
+                    'success' => $request->session()->get('success'),
+                    'error' => $request->session()->get('error'),
+                ];
+            },
         ]);
     }
 }

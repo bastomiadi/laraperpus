@@ -36,20 +36,20 @@
   font-size: 24px;
 }
 
-header {
+.header-home {
   background-color: #04082c;
   min-height: 400px;
   color: #ffffff;
 }
-header .bener-title {
+.header-home .bener-title {
   position: relative;
   align-items: center;
   top: 25%;
 }
-header .bener-title h1, header .bener-title .h1 {
+.header-home .bener-title h1, .header-home .bener-title .h1 {
   font-weight: 700;
 }
-header .bener-title .book-collection::after {
+.header-home .bener-title .book-collection::after {
   content: "";
   display: block;
   border-bottom: 3px solid currentColor;
@@ -57,7 +57,7 @@ header .bener-title .book-collection::after {
   border-radius: 10px;
   overflow: hidden;
 }
-header .img-bener {
+.header-home .img-bener {
   margin-top: 20px;
   margin-bottom: 10px;
   background-size: cover;
@@ -4915,18 +4915,20 @@ textarea.form-control-lg {
 .breadcrumb {
   display: flex;
   flex-wrap: wrap;
-  padding: 0 0;
+  padding: 10px 10px;
   margin-bottom: 1rem;
   list-style: none;
+  background-color: #f8f9fd;
+  border-radius: 10px;
 }
 
 .breadcrumb-item + .breadcrumb-item {
-  padding-left: 0.5rem;
+  padding-left: 0.2rem;
 }
 .breadcrumb-item + .breadcrumb-item::before {
   float: left;
-  padding-right: 0.5rem;
-  color: #6c757d;
+  padding-right: 0.2rem;
+  color: #04082c;
   content: var(--bs-breadcrumb-divider, "/") /* rtl: var(--bs-breadcrumb-divider, "/") */;
 }
 .breadcrumb-item.active {

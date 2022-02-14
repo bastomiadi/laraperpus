@@ -1,14 +1,14 @@
 <template>
     <Head title="Home" />
     <Layout>
-        <header>
+        <header class="header-home">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="bener-title">
                             <h1 class="h1 mb-3">Laraperpus</h1>
                             <div class="h5 mb-2">Get Your New</div>
-                            <div class="text-warning h3 mb-3 book-collection">
+                            <div class="text-warning h4 mb-3 book-collection">
                                 <strong>Book</strong> Collection
                             </div>
                             <p>
@@ -78,10 +78,12 @@
                         </Link>
                     </div>
                 </div>
-                <a href="#" class="btn btn-primary bg-gradient border-0"
+                <Link
+                    :href="route('catalog.book')"
+                    class="btn btn-primary bg-gradient border-0"
                     >Load more
                     <vue-feather type="arrow-right-circle"></vue-feather
-                ></a>
+                ></Link>
             </div>
         </section>
     </Layout>
