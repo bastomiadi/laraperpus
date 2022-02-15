@@ -69,9 +69,6 @@
                                                 book.category
                                             }}</strong>
                                         </li>
-                                        <li class="list-group-item">
-                                            {{ formatPrice(book.harga) }}
-                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -101,7 +98,6 @@ export default {
                     category: "PHP Dasar",
                     name: "Pemograman Web Dasar dengan PHP",
                     judul: "Pemograman Web Dasar dengan PHP",
-                    harga: "50000",
                     image: "https://source.unsplash.com/digital/600x300",
                 },
                 {
@@ -109,7 +105,6 @@ export default {
                     category: "Laravel",
                     name: "Book B",
                     judul: "Laravel Dasar CRUD",
-                    harga: "55000",
                     image: "https://source.unsplash.com/digital/600x300",
                 },
                 {
@@ -117,7 +112,6 @@ export default {
                     category: "Javascript Dasar",
                     name: "Mengenal Javascript",
                     judul: "Mengenal Javascript",
-                    harga: "45000",
                     image: "https://source.unsplash.com/digital/600x300",
                 },
                 {
@@ -125,7 +119,6 @@ export default {
                     category: "Vue Js",
                     name: "Book D",
                     judul: "Dasa-dasar Vuejs2",
-                    harga: "100000",
                     image: "https://source.unsplash.com/digital/600x300",
                 },
             ],

@@ -7,6 +7,6 @@ mix.js("resources/js/app.js", "public/js")
     .webpackConfig(require("./webpack.config"));
 
 // browserSync("http://127.0.0.1:8000");
-// if (mix.inProduction()) {
-//     mix.version();
-// }
+if (mix.inProduction()) {
+    mix.version();
+}

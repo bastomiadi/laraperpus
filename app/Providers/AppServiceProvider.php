@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
@@ -25,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Paginator::useBootstrap();
         // 'canLogin' => fn () => Route::has('login') ? Route::has('login') : null,
         //     'canRegister' => fn () => Route::has('register') ? Route::has('register') : null,
         // Inertia::share('canLogin', function () {

@@ -14,10 +14,12 @@ class CategoryBookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         return inertia('Category/Index', [
-            'categori_books'    => CategoryBook::oldest('nama')->get()
+            'categori_books'    => CategoryBook::when($request->search, function ($query, $search) {
+                $query->where('nama', 'LIKE', '%' . $search . '%');
+            })->paginate(7)
         ]);
     }
 

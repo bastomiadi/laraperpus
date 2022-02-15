@@ -15,12 +15,16 @@
                             <span
                                 class="input-group-text"
                                 id="inputGroup-sizing-default"
-                                >Search</span
                             >
+                                <vue-feather type="search"></vue-feather>
+                            </span>
                             <input
                                 type="text"
                                 class="form-control"
                                 placeholder="Search"
+                                v-model="search"
+                                @keyup="searchCategory"
+                                autofocus
                             />
                         </div>
                     </form>
@@ -48,7 +52,7 @@
                             </thead>
                             <tbody>
                                 <tr
-                                    v-for="category in categori_books"
+                                    v-for="category in categori_books.data"
                                     :key="category.id"
                                 >
                                     <td>
@@ -66,26 +70,26 @@
                                     </td>
                                     <td>
                                         <Link
-                                            class="text-decoration-none d-flex align-items-center"
                                             :href="
                                                 route(
                                                     'category.edit',
                                                     category.id
                                                 )
                                             "
+                                            class="text-decoration-none d-flex align-items-center"
                                         >
                                             {{ category.slug }}
                                         </Link>
                                     </td>
                                     <td>
                                         <Link
-                                            class="text-decoration-none d-flex align-items-center"
                                             :href="
                                                 route(
                                                     'category.edit',
                                                     category.id
                                                 )
                                             "
+                                            class="text-decoration-none d-flex align-items-center"
                                         >
                                             {{ category.keterangan }}
                                             <div class="float-end">
@@ -111,6 +115,10 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <Pagination
+                            class="mt-6"
+                            :links="categori_books.links"
+                        />
                     </div>
                 </div>
             </div>
@@ -121,15 +129,30 @@
 import Layoutadmin from "@/Layouts/Layoutadmin.vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import FlashMessage from "@/Components/FlashMessage.vue";
+import Pagination from "@/Components/Pagination.vue";
 export default {
+    data() {
+        return {
+            search: "",
+        };
+    },
     props: {
-        categori_books: Array, //Get data dari category book controller
+        categori_books: Object,
+    },
+    methods: {
+        searchCategory() {
+            this.$inertia.replace(
+                route("category.index", { search: this.search })
+            );
+            console.log(this.search);
+        },
     },
     components: {
         Layoutadmin,
         Head,
         Link,
         FlashMessage,
+        Pagination,
     },
 };
 </script>
