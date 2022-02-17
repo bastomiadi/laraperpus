@@ -22,9 +22,9 @@
                         <a
                             href="#"
                             class="btn btn-primary border-0 me-2 mb-2"
-                            v-for="catalog in catalogs"
+                            v-for="catalog in categories"
                             :key="catalog.id"
-                            >{{ catalog.name }}</a
+                            >{{ catalog.nama }}</a
                         >
                         <hr class="border-top-1 border-primary" />
                     </div>
@@ -87,26 +87,11 @@
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import Layout from "@/Layouts/Layout.vue";
 export default {
+    props: {
+        categories: Array,
+    },
     data() {
         return {
-            catalogs: [
-                {
-                    id: 1,
-                    name: "PHP Dasar",
-                },
-                {
-                    id: 2,
-                    name: "Laravel",
-                },
-                {
-                    id: 3,
-                    name: "Javascript",
-                },
-                {
-                    id: 4,
-                    name: "NodeJs",
-                },
-            ],
             books: [
                 {
                     id: "1",

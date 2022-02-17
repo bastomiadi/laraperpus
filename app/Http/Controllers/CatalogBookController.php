@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CategoryBook;
 use Illuminate\Http\Request;
 
 class CatalogBookController extends Controller
@@ -14,6 +15,8 @@ class CatalogBookController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return inertia('CatalogBook');
+        return inertia('CatalogBook', [
+            'categories'    => CategoryBook::get()
+        ]);
     }
 }

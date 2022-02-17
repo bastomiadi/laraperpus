@@ -47,10 +47,13 @@
                             </NavLink>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <NavLink
+                                :href="route('book.index')"
+                                :active="route().current('book*')"
+                            >
                                 <vue-feather type="book"></vue-feather>
                                 Books
-                            </a>
+                            </NavLink>
                         </li>
                     </ul>
 

@@ -60,13 +60,22 @@
                     >
                         <Link href="#" class="text-decoration-none">
                             <div class="card border-0 shadow">
-                                <img :src="book.image" class="card-img-top" />
+                                <img
+                                    :src="book.cover"
+                                    v-if="book.cover"
+                                    class="card-img-top"
+                                />
+                                <img
+                                    :src="ran"
+                                    v-if="!book.cover"
+                                    class="card-img-top"
+                                />
                                 <div class="card-body">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
                                             {{ book.judul }} |
                                             <strong class="badge bg-primary">{{
-                                                book.category
+                                                book.category_book.nama
                                             }}</strong>
                                         </li>
                                     </ul>
@@ -89,39 +98,13 @@
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import Layout from "@/Layouts/Layout.vue";
 export default {
+    props: {
+        books: Array,
+    },
     data() {
         return {
             imgc: "https://source.unsplash.com/600x300",
-            books: [
-                {
-                    id: "1",
-                    category: "PHP Dasar",
-                    name: "Pemograman Web Dasar dengan PHP",
-                    judul: "Pemograman Web Dasar dengan PHP",
-                    image: "https://source.unsplash.com/digital/600x300",
-                },
-                {
-                    id: "2",
-                    category: "Laravel",
-                    name: "Book B",
-                    judul: "Laravel Dasar CRUD",
-                    image: "https://source.unsplash.com/digital/600x300",
-                },
-                {
-                    id: "3",
-                    category: "Javascript Dasar",
-                    name: "Mengenal Javascript",
-                    judul: "Mengenal Javascript",
-                    image: "https://source.unsplash.com/digital/600x300",
-                },
-                {
-                    id: "4",
-                    category: "Vue Js",
-                    name: "Book D",
-                    judul: "Dasa-dasar Vuejs2",
-                    image: "https://source.unsplash.com/digital/600x300",
-                },
-            ],
+            ran: "https://source.unsplash.com/digital/600x300",
         };
     },
     components: {
