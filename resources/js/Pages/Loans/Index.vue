@@ -1,12 +1,11 @@
 <template>
-    <Head title="Category Book" />
-
+    <Head title="Peminjaman" />
     <Layoutadmin>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div
                 class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
             >
-                <h1 class="h2">Category Book</h1>
+                <h1 class="h2">Peminjaman</h1>
             </div>
             <div class="mb-2 d-flex justify-content-between">
                 <div>
@@ -23,16 +22,14 @@
                                 class="form-control"
                                 placeholder="Search"
                                 v-model="search"
-                                @keyup="searchCategory"
+                                @keyup="searchBook"
                                 autofocus
                             />
                         </div>
                     </form>
                 </div>
                 <div>
-                    <Link
-                        :href="route('category.create')"
-                        class="btn btn-primary"
+                    <Link :href="route('loan.create')" class="btn btn-primary"
                         ><vue-feather type="plus-circle"></vue-feather>
                         Create</Link
                     >
@@ -45,53 +42,71 @@
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th>Nama</th>
-                                    <th>Slug</th>
-                                    <th>Lokasi</th>
+                                    <th>Mahasiswa</th>
+                                    <th>Buku</th>
+                                    <th>Kode Peminjaman</th>
+                                    <th>Tanggal Pinjam</th>
+                                    <th>Tanggal Kembali</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr
-                                    v-for="category in categori_books.data"
-                                    :key="category.id"
-                                >
+                                <tr v-for="loan in loans.data" :key="loan.id">
                                     <td>
                                         <Link
                                             class="text-decoration-none d-flex align-items-center"
-                                            :href="
-                                                route(
-                                                    'category.edit',
-                                                    category.id
-                                                )
-                                            "
+                                            :href="route('loan.edit', loan.id)"
                                         >
-                                            {{ category.nama }}
+                                            {{ loan.user.name }}
                                         </Link>
                                     </td>
                                     <td>
                                         <Link
-                                            :href="
-                                                route(
-                                                    'category.edit',
-                                                    category.id
-                                                )
-                                            "
                                             class="text-decoration-none d-flex align-items-center"
+                                            :href="route('loan.edit', loan.id)"
                                         >
-                                            {{ category.slug }}
+                                            {{ loan.book.judul }}
                                         </Link>
                                     </td>
                                     <td>
                                         <Link
-                                            :href="
-                                                route(
-                                                    'category.edit',
-                                                    category.id
-                                                )
-                                            "
+                                            :href="route('loan.edit', loan.id)"
                                             class="text-decoration-none d-flex align-items-center"
                                         >
-                                            {{ category.lokasi }}
+                                            {{ loan.kode_peminjaman }}
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Link
+                                            :href="route('loan.edit', loan.id)"
+                                            class="text-decoration-none d-flex align-items-center"
+                                        >
+                                            {{ loan.tanggal_pinjam }}
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Link
+                                            :href="route('loan.edit', loan.id)"
+                                            class="text-decoration-none d-flex align-items-center"
+                                        >
+                                            {{ loan.tanggal_kembali }}
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Link
+                                            :href="route('loan.edit', loan.id)"
+                                            class="text-decoration-none d-flex align-items-center"
+                                        >
+                                            <span
+                                                class="badge bg-success"
+                                                v-if="loan.status"
+                                                >Success</span
+                                            >
+                                            <span
+                                                class="badge bg-warning"
+                                                v-else
+                                                >Pending</span
+                                            >
                                             <div class="float-end">
                                                 <vue-feather
                                                     type="chevron-right"
@@ -101,10 +116,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td
-                                        colspan="3"
-                                        v-if="categori_books.length === 0"
-                                    >
+                                    <td colspan="3" v-if="loans.length === 0">
                                         <div
                                             class="alert alert-danger border-0"
                                             role="alert"
@@ -115,10 +127,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <Pagination
-                            class="mt-6"
-                            :links="categori_books.links"
-                        />
+                        <Pagination class="mt-6" :links="loans.links" />
                     </div>
                 </div>
             </div>
@@ -137,14 +146,11 @@ export default {
         };
     },
     props: {
-        categori_books: Object,
+        loans: Object,
     },
     methods: {
-        searchCategory() {
-            this.$inertia.replace(
-                route("category.index", { search: this.search })
-            );
-            console.log(this.search);
+        searchBook() {
+            this.$inertia.replace(route("loan.index", { search: this.search }));
         },
     },
     components: {

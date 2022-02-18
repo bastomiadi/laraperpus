@@ -32,23 +32,29 @@
                 <div class="row">
                     <div
                         class="col-md-4 mb-4"
-                        v-for="book in books"
+                        v-for="book in books.data"
                         :key="book.id"
                         data-aos="fade-up"
                     >
                         <Link href="#" class="text-decoration-none">
                             <div class="card border-0 shadow">
-                                <img :src="book.image" class="card-img-top" />
+                                <img
+                                    :src="book.cover"
+                                    v-if="book.cover"
+                                    class="card-img-top"
+                                />
+                                <img
+                                    :src="imgc"
+                                    v-if="!book.cover"
+                                    class="card-img-top"
+                                />
                                 <div class="card-body">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
                                             {{ book.judul }} |
                                             <strong class="badge bg-primary">{{
-                                                book.category
+                                                book.category_book.nama
                                             }}</strong>
-                                        </li>
-                                        <li class="list-group-item">
-                                            {{ formatPrice(book.harga) }}
                                         </li>
                                     </ul>
                                 </div>
@@ -56,29 +62,10 @@
                         </Link>
                     </div>
                 </div>
-                <nav aria-label="Page navigation example" class="mt-5">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                <Pagination
+                    class="mt-6 justify-content-center d-flex"
+                    :links="books.links"
+                />
             </div>
         </section>
     </Layout>
@@ -86,58 +73,28 @@
 <script>
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import Layout from "@/Layouts/Layout.vue";
+import Pagination from "@/Components/Pagination.vue";
 export default {
     props: {
         categories: Array,
+        books: Object,
     },
     data() {
         return {
-            books: [
-                {
-                    id: "1",
-                    category: "PHP Dasar",
-                    name: "Pemograman Web Dasar dengan PHP",
-                    judul: "Pemograman Web Dasar dengan PHP",
-                    harga: "50000",
-                    image: "https://source.unsplash.com/books/600x300",
-                },
-                {
-                    id: "2",
-                    category: "Laravel",
-                    name: "Book B",
-                    judul: "Laravel Dasar CRUD",
-                    harga: "55000",
-                    image: "https://source.unsplash.com/digital/600x300",
-                },
-                {
-                    id: "3",
-                    category: "Javascript Dasar",
-                    name: "Mengenal Javascript",
-                    judul: "Mengenal Javascript",
-                    harga: "45000",
-                    image: "https://source.unsplash.com/digital/600x300",
-                },
-                {
-                    id: "4",
-                    category: "Vue Js",
-                    name: "Book D",
-                    judul: "Dasa-dasar Vuejs2",
-                    harga: "100000",
-                    image: "https://source.unsplash.com/digital/600x300",
-                },
-            ],
+            imgc: "https://source.unsplash.com/600x300",
         };
     },
     components: {
         Head,
         Layout,
         Link,
+        Pagination,
     },
-    methods: {
-        formatPrice(value) {
-            let val = (value / 1).toFixed(2).replace(".", ",");
-            return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        },
-    },
+    // methods: {
+    //     formatPrice(value) {
+    //         let val = (value / 1).toFixed(2).replace(".", ",");
+    //         return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    //     },
+    // },
 };
 </script>

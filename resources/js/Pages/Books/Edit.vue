@@ -21,97 +21,113 @@
                 </nav>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-10">
                     <div class="card shadow-sm border-0">
                         <div class="card-body">
                             <form @submit.prevent="update" autocomplete="off">
-                                <div class="mb-3">
-                                    <label for="category" class="form-label"
-                                        >Category</label
-                                    >
-                                    <select
-                                        v-model="form.category"
-                                        id="category"
-                                        class="form-select"
-                                    >
-                                        <option
-                                            v-for="cat in categories"
-                                            :key="cat.id"
-                                            :value="cat.id"
-                                        >
-                                            {{ cat.nama }}
-                                        </option>
-                                    </select>
-                                    <small
-                                        class="text-danger"
-                                        v-if="errors.category"
-                                        >{{ errors.category }}</small
-                                    >
-                                </div>
-                                <div class="mb-3">
-                                    <label for="judul" class="form-label"
-                                        >Judul</label
-                                    >
-                                    <textarea
-                                        v-model="form.judul"
-                                        id="judul"
-                                        class="form-control"
-                                    ></textarea>
-                                    <small
-                                        class="text-danger"
-                                        v-if="errors.judul"
-                                        >{{ errors.judul }}</small
-                                    >
-                                </div>
-                                <div class="mb-3">
-                                    <label for="judul" class="form-label"
-                                        >Penerbit</label
-                                    >
-                                    <input
-                                        type="text"
-                                        v-model="form.penerbit"
-                                        id="penerbit"
-                                        class="form-control"
-                                    />
-                                    <small
-                                        class="text-danger"
-                                        v-if="errors.penerbit"
-                                        >{{ errors.penerbit }}</small
-                                    >
-                                </div>
-                                <div class="mb-3">
-                                    <label for="judul" class="form-label"
-                                        >Penulis</label
-                                    >
-                                    <input
-                                        type="text"
-                                        v-model="form.penulis"
-                                        id="penulis"
-                                        class="form-control"
-                                    />
-                                    <small
-                                        class="text-danger"
-                                        v-if="errors.penulis"
-                                        >{{ errors.penulis }}</small
-                                    >
-                                </div>
-                                <div class="mb-3">
-                                    <label
-                                        for="tanggal_terbit"
-                                        class="form-label"
-                                        >Tanggal Penerbit</label
-                                    >
-                                    <input
-                                        type="date"
-                                        v-model="form.tanggal_terbit"
-                                        id="tanggal_terbit"
-                                        class="form-control"
-                                    />
-                                    <small
-                                        class="text-danger"
-                                        v-if="errors.tanggal_terbit"
-                                        >{{ errors.tanggal_terbit }}</small
-                                    >
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label
+                                                for="category"
+                                                class="form-label"
+                                                >Category</label
+                                            >
+                                            <select
+                                                v-model="form.category"
+                                                id="category"
+                                                class="form-select"
+                                            >
+                                                <option
+                                                    v-for="cat in categories"
+                                                    :key="cat.id"
+                                                    :value="cat.id"
+                                                >
+                                                    {{ cat.nama }}
+                                                </option>
+                                            </select>
+                                            <small
+                                                class="text-danger"
+                                                v-if="errors.category"
+                                                >{{ errors.category }}</small
+                                            >
+                                        </div>
+                                        <div class="mb-3">
+                                            <label
+                                                for="judul"
+                                                class="form-label"
+                                                >Judul</label
+                                            >
+                                            <textarea
+                                                v-model="form.judul"
+                                                id="judul"
+                                                class="form-control"
+                                            ></textarea>
+                                            <small
+                                                class="text-danger"
+                                                v-if="errors.judul"
+                                                >{{ errors.judul }}</small
+                                            >
+                                        </div>
+                                        <div class="mb-3">
+                                            <label
+                                                for="judul"
+                                                class="form-label"
+                                                >Penerbit</label
+                                            >
+                                            <input
+                                                type="text"
+                                                v-model="form.penerbit"
+                                                id="penerbit"
+                                                class="form-control"
+                                            />
+                                            <small
+                                                class="text-danger"
+                                                v-if="errors.penerbit"
+                                                >{{ errors.penerbit }}</small
+                                            >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label
+                                                for="judul"
+                                                class="form-label"
+                                                >Penulis</label
+                                            >
+                                            <input
+                                                type="text"
+                                                v-model="form.penulis"
+                                                id="penulis"
+                                                class="form-control"
+                                            />
+                                            <small
+                                                class="text-danger"
+                                                v-if="errors.penulis"
+                                                >{{ errors.penulis }}</small
+                                            >
+                                        </div>
+                                        <div class="mb-3">
+                                            <label
+                                                for="tanggal_terbit"
+                                                class="form-label"
+                                                >Tahun Penerbit</label
+                                            >
+                                            <input
+                                                type="date"
+                                                v-model="form.tanggal_terbit"
+                                                id="tanggal_terbit"
+                                                class="form-control"
+                                            />
+                                            <small
+                                                class="text-danger"
+                                                v-if="errors.tanggal_terbit"
+                                                >{{
+                                                    errors.tanggal_terbit
+                                                }}</small
+                                            >
+                                        </div>
+                                    </div>
                                 </div>
                                 <hr />
                                 <div class="mb-3 d-flex justify-content-end">

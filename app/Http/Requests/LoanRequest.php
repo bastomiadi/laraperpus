@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class BookRequest extends FormRequest
+class LoanRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,12 +25,10 @@ class BookRequest extends FormRequest
     public function rules()
     {
         return [
-            'category'     => 'required',
-            'judul'     => 'required',
-            'penerbit'     => 'required',
-            'penulis'     => 'required',
-            'tanggal_terbit'     => 'required',
-            // "stok"  => 'required|numeric|max:50|min:1'
+            "book"  => "required|numeric",
+            "mahasiswa"  => "required|numeric",
+            "tanggal_peminjaman" => "required|date",
+            "tanggal_pengembalian" => "required|date"
         ];
     }
 }

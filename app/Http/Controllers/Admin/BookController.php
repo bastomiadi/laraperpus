@@ -60,7 +60,8 @@ class BookController extends Controller
             'judul'     => $request->judul,
             'penerbit'  => $request->penerbit,
             'editor'   => $request->penulis,
-            'tanggal_terbit'  => $request->tanggal_terbit
+            'tanggal_terbit'  => $request->tanggal_terbit,
+            // 'stok'          => $request->stok
         ]);
         return redirect()
             ->route('book.index')

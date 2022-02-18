@@ -46,6 +46,7 @@
                                     <th>Judul</th>
                                     <th>Penerbit</th>
                                     <th>Editor</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -80,6 +81,21 @@
                                             class="text-decoration-none d-flex align-items-center"
                                         >
                                             {{ book.editor }}
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Link
+                                            :href="route('book.edit', book.id)"
+                                            class="text-decoration-none d-flex align-items-center"
+                                        >
+                                            <span
+                                                class="badge bg-success"
+                                                v-if="book.status"
+                                                >Tersedia</span
+                                            >
+                                            <span class="badge bg-danger" v-else
+                                                >Tidak Tersedia</span
+                                            >
                                             <div class="float-end">
                                                 <vue-feather
                                                     type="chevron-right"

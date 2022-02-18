@@ -37,7 +37,10 @@
                                 Dashboard
                             </NavLink>
                         </li>
-                        <li class="nav-item">
+                        <li
+                            class="nav-item"
+                            v-if="$page.props.is_admin.role == 'ADMIN'"
+                        >
                             <NavLink
                                 :href="route('category.index')"
                                 :active="route().current('category*')"
@@ -53,6 +56,30 @@
                             >
                                 <vue-feather type="book"></vue-feather>
                                 Books
+                            </NavLink>
+                        </li>
+                        <li
+                            class="nav-item"
+                            v-if="$page.props.is_admin.role == 'ADMIN'"
+                        >
+                            <NavLink
+                                :href="route('loan.index')"
+                                :active="route().current('loan*')"
+                            >
+                                <vue-feather type="file-text"></vue-feather>
+                                Peminjaman
+                            </NavLink>
+                        </li>
+                        <li
+                            class="nav-item"
+                            v-if="$page.props.is_admin.role == 'Mahasiswa'"
+                        >
+                            <NavLink
+                                :href="route('history')"
+                                :active="route().current('history*')"
+                            >
+                                <vue-feather type="file-text"></vue-feather>
+                                Riwayat Peminjaman
                             </NavLink>
                         </li>
                     </ul>

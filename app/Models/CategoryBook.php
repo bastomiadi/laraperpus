@@ -11,6 +11,6 @@ class CategoryBook extends Model
     protected $fillable = [
         'nama',
         'slug',
-        'keterangan'
+        'lokasi'
     ];
 }

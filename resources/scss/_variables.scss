@@ -17,7 +17,14 @@ $font-weight: (
     "semibold": 600,
     "bold": 700,
 );
-
+$border-width: 1px;
+$border-widths: (
+    1: 1px,
+    2: 2px,
+    3: 3px,
+    4: 4px,
+    5: 5px,
+);
 $breadcrumb-bg: $gray;
 $breadcrumb-padding-y: 10px;
 $breadcrumb-padding-x: 10px;

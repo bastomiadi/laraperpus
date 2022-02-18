@@ -43,12 +43,12 @@ class CategoryBookController extends Controller
     {
         $request->validate([
             'nama'  => 'required',
-            'keterangan'  => 'required'
+            'lokasi'  => 'required'
         ]);
         CategoryBook::create([
             'nama'  => $request->nama,
             'slug'  => Str::slug($request->nama),
-            'keterangan'    => $request->keterangan
+            'lokasi'    => $request->lokasi
         ]);
 
         return redirect()
@@ -93,12 +93,12 @@ class CategoryBookController extends Controller
     {
         $request->validate([
             'nama'  => 'required',
-            'keterangan'  => 'required'
+            'lokasi'  => 'required'
         ]);
 
         $category->update([
             'nama'  => $request->nama,
-            'keterangan'    => $request->keterangan
+            'lokasi'    => $request->lokasi
         ]);
 
         return redirect()

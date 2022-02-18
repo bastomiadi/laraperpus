@@ -32,11 +32,14 @@ const submit = () => {
         <div v-if="status" class="mb-4 text-danger">
             {{ status }}
         </div>
-
+        <div class="h6 mt-3 mb-4 mt-4">
+            Sign in your <span class="border-bottom">account</span>
+        </div>
         <form @submit.prevent="submit" autocomplete="off">
             <div>
                 <BreezeLabel for="email" value="Email" />
                 <BreezeInput
+                    class="rounded-3"
                     id="email"
                     type="email"
                     v-model="form.email"
@@ -53,30 +56,32 @@ const submit = () => {
                 />
             </div>
 
-            <div class="block mt-4">
+            <div class="d-flex align-items-center justify-content-between mt-4">
                 <label class="d-flex align-items-center">
                     <BreezeCheckbox
                         name="remember"
                         v-model:checked="form.remember"
                     />
-                    <span class="ml-2"> Remember me</span>
+                    <span class="ms-2 text-muted"> Remember me</span>
                 </label>
+                <Link
+                    v-if="canResetPassword"
+                    :href="route('password.request')"
+                    class="text-decoration-none border-bottom text-info"
+                >
+                    Forgot Password
+                </Link>
             </div>
 
-            <div class="d-flex align-items-center justify-content-between mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')">
-                    Forgot your password?
-                </Link>
-
+            <div class="d-flex justify-content-between mt-3 mb-4">
                 <BreezeButton
-                    class="ml-4"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
                     Log in
                 </BreezeButton>
             </div>
-            <Link :href="route('home')"> Home </Link>
+            <Link :href="route('register')">Don't have account?</Link>
         </form>
     </BreezeGuestLayout>
 </template>

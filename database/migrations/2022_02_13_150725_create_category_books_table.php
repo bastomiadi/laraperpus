@@ -17,7 +17,7 @@ class CreateCategoryBooksTable extends Migration
             $table->id();
             $table->string('nama');
             $table->string('slug');
-            $table->string('keterangan');
+            $table->string('lokasi');
             $table->timestamps();
         });
     }

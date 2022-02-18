@@ -17,6 +17,7 @@ class Book extends Model
         'editor',
         'tanggal_terbit',
         'cover',
+        // 'stok',
         'status'
     ];
 
@@ -27,6 +28,8 @@ class Book extends Model
      */
     public function category_book(): BelongsTo
     {
-        return $this->belongsTo(CategoryBook::class, 'category_id');
+        return $this->belongsTo(CategoryBook::class, 'category_id')->withDefault([
+            'nama'  => '-'
+        ]);
     }
 }

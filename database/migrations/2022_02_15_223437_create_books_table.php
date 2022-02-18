@@ -23,6 +23,7 @@ class CreateBooksTable extends Migration
             $table->string('editor');
             $table->date('tanggal_terbit');
             $table->string('cover')->nullable();
+            // $table->string('stok');
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

@@ -4,22 +4,23 @@ import { Link } from "@inertiajs/inertia-vue3";
 </script>
 
 <template>
-    <div
-        class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100"
-    >
-        <!-- <div>
+    <!-- <div>
             <Link href="/">
                 <BreezeApplicationLogo class="w-20 h-20 fill-current text-gray-500" />
             </Link>
         </div> -->
 
-        <div class="container">
-            <div class="row vh-100 justify-content-center align-items-center">
-                <div class="col-md-5">
-                    <div class="card border-0 shadow">
-                        <div class="card-body">
-                            <slot />
-                        </div>
+    <div class="container">
+        <div class="row vh-100 justify-content-center align-items-center">
+            <div class="col-md-5">
+                <div class="h2 mb-3">
+                    <Link :href="route('home')" class="text-decoration-none"
+                        ><i class="text-primary">Laraperpus</i></Link
+                    >
+                </div>
+                <div class="card border-0 shadow rounded-3 px-3">
+                    <div class="card-body">
+                        <slot />
                     </div>
                 </div>
             </div>

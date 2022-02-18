@@ -44,16 +44,16 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="Keterangan" class="form-label"
-                                        >Keterangan</label
+                                        >Lokasi</label
                                     >
                                     <textarea
-                                        v-model="form.keterangan"
+                                        v-model="form.lokasi"
                                         class="form-control"
                                     ></textarea>
                                     <small
                                         class="text-danger"
-                                        v-if="errors.keterangan"
-                                        >{{ errors.keterangan }}</small
+                                        v-if="errors.lokasi"
+                                        >{{ errors.lokasi }}</small
                                     >
                                 </div>
                                 <hr />
@@ -104,7 +104,7 @@ export default {
             form: this.$inertia.form({
                 id: this.category.id,
                 nama: this.category.nama,
-                keterangan: this.category.keterangan,
+                lokasi: this.category.lokasi,
                 _token: this.$page.props.csrf_token,
             }),
         };
