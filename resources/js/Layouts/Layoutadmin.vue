@@ -49,7 +49,10 @@
                                 Category Book
                             </NavLink>
                         </li>
-                        <li class="nav-item">
+                        <li
+                            class="nav-item"
+                            v-if="$page.props.is_admin.role == 'ADMIN'"
+                        >
                             <NavLink
                                 :href="route('book.index')"
                                 :active="route().current('book*')"

@@ -31,7 +31,7 @@
                         <li class="nav-item">
                             <NavLink
                                 :href="route('catalog.book')"
-                                :active="route().current('catalog.book')"
+                                :active="route().current('catalog.book*')"
                                 >Catalog Book</NavLink
                             >
                         </li>

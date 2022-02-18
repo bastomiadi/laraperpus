@@ -19,13 +19,20 @@
                                 nesciunt.
                             </p>
                         </div>
-                        <a
-                            href="#"
+                        <Link
+                            :href="route('catalog.book')"
+                            class="btn btn-primary me-2 mb-2"
+                            >Semua</Link
+                        >
+                        <button
+                            type="button"
                             class="btn btn-primary border-0 me-2 mb-2"
                             v-for="catalog in categories"
                             :key="catalog.id"
-                            >{{ catalog.nama }}</a
+                            @click="showCategory(catalog.slug)"
                         >
+                            {{ catalog.nama }}
+                        </button>
                         <hr class="border-top-1 border-primary" />
                     </div>
                 </div>
@@ -62,6 +69,13 @@
                         </Link>
                     </div>
                 </div>
+                <div
+                    class="alert alert-danger"
+                    v-if="books.data.length == 0"
+                    role="alert"
+                >
+                    Data Tidak ditemukan
+                </div>
                 <Pagination
                     class="mt-6 justify-content-center d-flex"
                     :links="books.links"
@@ -81,6 +95,7 @@ export default {
     },
     data() {
         return {
+            catbook: "",
             imgc: "https://source.unsplash.com/600x300",
         };
     },
@@ -90,11 +105,10 @@ export default {
         Link,
         Pagination,
     },
-    // methods: {
-    //     formatPrice(value) {
-    //         let val = (value / 1).toFixed(2).replace(".", ",");
-    //         return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-    //     },
-    // },
+    methods: {
+        showCategory(slug) {
+            this.$inertia.get(route("catalog", { slug }));
+        },
+    },
 };
 </script>

@@ -28,7 +28,7 @@ class Book extends Model
      */
     public function category_book(): BelongsTo
     {
-        return $this->belongsTo(CategoryBook::class, 'category_id')->withDefault([
+        return $this->belongsTo(CategoryBook::class, 'category_id', 'id')->withDefault([
             'nama'  => '-'
         ]);
     }
