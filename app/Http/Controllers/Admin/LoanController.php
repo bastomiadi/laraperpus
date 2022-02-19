@@ -18,7 +18,7 @@ class LoanController extends Controller
     public function index(Request $request)
     {
         return inertia('Loans/Index', [
-            'loans'    => Loan::with(['book', 'user'])
+            'loans'    => Loan::with(['books', 'user'])
                 ->when(
                     $request->search,
                     function ($query, $search) {

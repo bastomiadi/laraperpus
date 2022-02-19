@@ -78,6 +78,18 @@
                             v-if="$page.props.is_admin.role == 'Mahasiswa'"
                         >
                             <NavLink
+                                :href="route('book')"
+                                :active="route().current('book*')"
+                            >
+                                <vue-feather type="file-text"></vue-feather>
+                                Catalog Book
+                            </NavLink>
+                        </li>
+                        <li
+                            class="nav-item"
+                            v-if="$page.props.is_admin.role == 'Mahasiswa'"
+                        >
+                            <NavLink
                                 :href="route('history')"
                                 :active="route().current('history*')"
                             >

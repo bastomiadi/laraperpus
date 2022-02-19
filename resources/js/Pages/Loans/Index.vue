@@ -53,44 +53,21 @@
                             <tbody>
                                 <tr v-for="loan in loans.data" :key="loan.id">
                                     <td>
-                                        <Link
-                                            class="text-decoration-none d-flex align-items-center"
-                                            :href="route('loan.edit', loan.id)"
-                                        >
-                                            {{ loan.user.name }}
-                                        </Link>
+                                        {{ loan.user.name }}
                                     </td>
                                     <td>
-                                        <Link
-                                            class="text-decoration-none d-flex align-items-center"
-                                            :href="route('loan.edit', loan.id)"
-                                        >
-                                            {{ loan.book.judul }}
-                                        </Link>
+                                        <div v-for="bk in loan.books" :key="bk">
+                                            {{ bk.judul }}
+                                        </div>
                                     </td>
                                     <td>
-                                        <Link
-                                            :href="route('loan.edit', loan.id)"
-                                            class="text-decoration-none d-flex align-items-center"
-                                        >
-                                            {{ loan.kode_peminjaman }}
-                                        </Link>
+                                        {{ loan.kode_peminjaman }}
                                     </td>
                                     <td>
-                                        <Link
-                                            :href="route('loan.edit', loan.id)"
-                                            class="text-decoration-none d-flex align-items-center"
-                                        >
-                                            {{ loan.tanggal_pinjam }}
-                                        </Link>
+                                        {{ loan.tanggal_pinjam }}
                                     </td>
                                     <td>
-                                        <Link
-                                            :href="route('loan.edit', loan.id)"
-                                            class="text-decoration-none d-flex align-items-center"
-                                        >
-                                            {{ loan.tanggal_kembali }}
-                                        </Link>
+                                        {{ loan.tanggal_kembali }}
                                     </td>
                                     <td>
                                         <Link

@@ -1,11 +1,12 @@
 <template>
-    <Head title="Riwayat Peminjaman" />
+    <Head title="Catalog Book" />
 
     <Layoutadmin>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div
                 class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
             >
+                <h1 class="h2">Dashboard</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group me-2">
                         <button
@@ -31,73 +32,66 @@
                 </div>
             </div>
 
-            <div class="mb-3 mt-2">
-                <flash-message />
+            <div class="mt-5 mb-4">
+                <Link
+                    :href="route('pinjam.create')"
+                    class="btn btn-primary shadow border-0"
+                >
+                    <vue-feather type="navigation"></vue-feather> Ajukan
+                    Peminjaman</Link
+                >
             </div>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
                         <tr>
-                            <th scope="col">Judul Buku</th>
-                            <th scope="col">Kode Peminjaman</th>
-                            <th scope="col">Tanggal Peminjaman</th>
-                            <th scope="col">Tanggal Kembali</th>
-                            <th scope="col">Status</th>
+                            <th scope="col">Kategory</th>
+                            <th scope="col">Judul</th>
+                            <th scope="col">Penerbit</th>
+                            <th scope="col">Editor</th>
+                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="loan in loans.data" :key="loan.id">
+                        <tr v-for="book in books.data" :key="book.id">
+                            <td>{{ book.category_book.nama }}</td>
+                            <td>{{ book.judul }}</td>
+                            <td>{{ book.penerbit }}</td>
+                            <td>{{ book.editor }}</td>
                             <td>
                                 <div
-                                    class="badge bg-primary"
-                                    v-for="bo in loan.books"
-                                    :key="bo.id"
-                                >
-                                    {{ bo.judul }}
-                                </div>
-                            </td>
-                            <td>{{ loan.kode_peminjaman }}</td>
-                            <td>{{ loan.tanggal_pinjam }}</td>
-                            <td>{{ loan.tanggal_kembali }}</td>
-                            <td>
-                                <span
                                     class="badge bg-success"
-                                    v-if="loan.status"
-                                    >Berhasil</span
+                                    v-if="book.status"
                                 >
-                                <span class="badge bg-warning" v-else
-                                    >Ditanggukan</span
+                                    <vue-feather type="check"></vue-feather>
+                                    Tersedia
+                                </div>
+                                <div
+                                    class="badge bg-danger text-white"
+                                    v-if="!book.status"
                                 >
-                            </td>
-                        </tr>
-                        <tr v-if="loans.data.length === 0">
-                            <td colspan="5">
-                                <div class="alert alert-danger">
-                                    Tidak ada data
+                                    <vue-feather type="x-circle"></vue-feather
+                                    >Tidak Tersedia
                                 </div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <Pagination class="mt-6" :links="loans.links" />
             </div>
         </main>
     </Layoutadmin>
 </template>
 <script>
 import Layoutadmin from "@/Layouts/Layoutadmin.vue";
-import { Head } from "@inertiajs/inertia-vue3";
-import Pagination from "@/Components/Pagination.vue";
-import FlashMessage from "@/Components/FlashMessage.vue";
+import { Head, Link } from "@inertiajs/inertia-vue3";
 export default {
     props: {
-        loans: Object,
+        books: Object,
     },
     components: {
         Layoutadmin,
         Head,
-        Pagination,
-        FlashMessage,
+        Link,
     },
 };
 </script>

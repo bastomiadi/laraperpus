@@ -4,7 +4,7 @@ import { createApp, h } from "vue";
 import { createInertiaApp } from "@inertiajs/inertia-vue3";
 import { InertiaProgress } from "@inertiajs/progress";
 import VueFeather from "vue-feather";
-import "../../node_modules/aos/dist/aos.css";
+// import "../../node_modules/aos/dist/aos.css";
 import AOS from "aos";
 
 const appName =

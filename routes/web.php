@@ -29,7 +29,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Mahasiswa
     Route::prefix('mahasiswa')->group(function () {
-        Route::get('history', [RiwayatPeminjamanController::class, 'history'])->name('history');
+        Route::get('/history', [RiwayatPeminjamanController::class, 'history'])->name('history');
+        Route::get('/book', [RiwayatPeminjamanController::class, 'book'])->name('book');
+        Route::get('/book/pinjam', [RiwayatPeminjamanController::class, 'pinjam'])->name('pinjam');
+        Route::get('/book/create', [RiwayatPeminjamanController::class, 'create'])->name('pinjam.create');
+        Route::post('/book/pinjam', [RiwayatPeminjamanController::class, 'store'])->name('pinjam.store');
     });
 });
 

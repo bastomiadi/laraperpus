@@ -18,9 +18,9 @@ class CreateLoansTable extends Migration
             $table->foreignId('user_id')
                 ->constrained('users')
                 ->references('id');
-            $table->foreignId('book_id')
-                ->constrained('books')
-                ->references('id');
+            // $table->foreignId('book_id')
+            //     ->constrained('books')
+            //     ->references('id');
 
             $table->string('kode_peminjaman');
             $table->date('tanggal_pinjam');

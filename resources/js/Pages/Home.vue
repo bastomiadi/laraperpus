@@ -8,8 +8,12 @@
                         <div class="bener-title">
                             <h1 class="h1 mb-3">Laraperpus</h1>
                             <div class="h5 mb-2">Get Your New</div>
-                            <div class="text-warning h4 mb-3 book-collection">
-                                <strong>Book</strong> Collection
+                            <div class="text-warning h4 mb-3">
+                                <strong
+                                    class="border-bottom border-warning border-3 rounded-1"
+                                    >Book</strong
+                                >
+                                Collection
                             </div>
                             <p>
                                 Lorem ipsum dolor sit amet consectetur

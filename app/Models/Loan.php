@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Loan extends Model
 {
@@ -12,7 +13,6 @@ class Loan extends Model
 
     protected $fillable = [
         'user_id',
-        'book_id',
         'kode_peminjaman',
         'tanggal_pinjam',
         'tanggal_kembali',
@@ -38,9 +38,19 @@ class Loan extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function book(): BelongsTo
+    // public function book(): BelongsTo
+    // {
+    //     return $this->belongsTo(Book::class);
+    // }
+
+    /**
+     * The books that belong to the Loan
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function books(): BelongsToMany
     {
-        return $this->belongsTo(Book::class);
+        return $this->belongsToMany(Book::class);
     }
 
     // public function name(): Attribute

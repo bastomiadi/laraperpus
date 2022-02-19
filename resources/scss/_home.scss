@@ -41,16 +41,6 @@
         h1 {
             font-weight: map-get($font-weight, bold);
         }
-        .book-collection {
-            &::after {
-                content: "";
-                display: block;
-                border-bottom: 3px solid currentColor;
-                width: 80px;
-                border-radius: 10px;
-                overflow: hidden;
-            }
-        }
     }
     .img-bener {
         margin-top: 20px;
