@@ -46,7 +46,7 @@
                         <Link href="#" class="text-decoration-none">
                             <div class="card border-0 shadow">
                                 <img
-                                    :src="book.cover"
+                                    :src="'/storage/' + book.cover"
                                     v-if="book.cover"
                                     class="card-img-top"
                                 />

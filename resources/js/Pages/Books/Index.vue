@@ -56,7 +56,7 @@
                                             class="text-decoration-none d-flex align-items-center"
                                             :href="route('book.edit', book.id)"
                                         >
-                                            {{ book.category_book.nama }}
+                                            {{ book.nama }}
                                         </Link>
                                     </td>
                                     <td>

@@ -20,7 +20,6 @@ class Book extends Model
         'editor',
         'tanggal_terbit',
         'cover',
-        // 'stok',
         'status'
     ];
 

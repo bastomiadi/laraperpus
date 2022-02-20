@@ -58,7 +58,11 @@
                                     <td>{{ mahasiswa.tanggal_kembali }}</td>
                                 </tr>
                             </table>
-                            <form @submit.prevent="update" autocomplete="off">
+                            <form
+                                @submit.prevent="update"
+                                autocomplete="off"
+                                v-if="!loan.status"
+                            >
                                 <div class="mb-3">
                                     <div class="form-check">
                                         <input

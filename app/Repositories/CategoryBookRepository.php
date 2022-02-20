@@ -9,6 +9,9 @@ use Illuminate\Support\Str;
 
 class CategoryBookRepository
 {
+    /**
+     * Proses menampilkan data
+     */
     public function getAll(Request $request)
     {
         $categori_books = DB::table('category_books')

@@ -30,6 +30,7 @@ class BookRequest extends FormRequest
             'penerbit'     => 'required',
             'penulis'     => 'required',
             'tanggal_terbit'     => 'required',
+            'image'     => 'nullable|image|mimes:png,jpg,jpeg'
             // "stok"  => 'required|numeric|max:50|min:1'
         ];
     }

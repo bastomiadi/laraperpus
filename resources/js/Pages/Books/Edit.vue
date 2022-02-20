@@ -127,6 +127,24 @@
                                                 }}</small
                                             >
                                         </div>
+                                        <div class="mb-3">
+                                            <label for="stok" class="form-label"
+                                                >Image</label
+                                            >
+                                            <input
+                                                type="file"
+                                                @input="
+                                                    form.image =
+                                                        $event.target.files[0]
+                                                "
+                                                class="form-image"
+                                            />
+                                            <small
+                                                class="text-danger"
+                                                v-if="errors.image"
+                                                >{{ errors.image }}</small
+                                            >
+                                        </div>
                                     </div>
                                 </div>
                                 <hr />
@@ -162,18 +180,20 @@ export default {
     data() {
         return {
             form: this.$inertia.form({
+                _method: "put",
                 category: this.book.category_id,
                 judul: this.book.judul,
                 penerbit: this.book.penerbit,
                 penulis: this.book.editor,
                 tanggal_terbit: this.book.tanggal_terbit,
+                image: "",
                 _token: this.$page.props.csrf_token,
             }),
         };
     },
     methods: {
         update() {
-            this.form.put(route("book.update", this.book.id), {
+            this.form.post(route("book.update", this.book.id), {
                 onSuccess: () => this.form.reset(),
             });
         },

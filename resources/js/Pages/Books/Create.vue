@@ -127,22 +127,24 @@
                                                 }}</small
                                             >
                                         </div>
-                                        <!-- <div class="mb-3">
+                                        <div class="mb-3">
                                             <label for="stok" class="form-label"
-                                                >Stok</label
+                                                >Image</label
                                             >
                                             <input
-                                                type="text"
-                                                v-model="form.stok"
-                                                id="stok"
-                                                class="form-control"
+                                                type="file"
+                                                @input="
+                                                    form.image =
+                                                        $event.target.files[0]
+                                                "
+                                                class="form-image"
                                             />
                                             <small
                                                 class="text-danger"
-                                                v-if="errors.stok"
-                                                >{{ errors.stok }}</small
+                                                v-if="errors.image"
+                                                >{{ errors.image }}</small
                                             >
-                                        </div> -->
+                                        </div>
                                     </div>
                                 </div>
                                 <hr />
@@ -182,7 +184,7 @@ export default {
                 penerbit: "",
                 penulis: "",
                 tanggal_terbit: "",
-                // stok: "",
+                image: "",
             }),
         };
     },
