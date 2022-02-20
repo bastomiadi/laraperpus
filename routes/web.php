@@ -34,6 +34,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/book/pinjam', [RiwayatPeminjamanController::class, 'pinjam'])->name('pinjam');
         Route::get('/book/create', [RiwayatPeminjamanController::class, 'create'])->name('pinjam.create');
         Route::post('/book/pinjam', [RiwayatPeminjamanController::class, 'store'])->name('pinjam.store');
+        // Route::post('/book/{id}', [RiwayatPeminjamanController::class, 'update'])->name('pinjam.update');
     });
 });
 

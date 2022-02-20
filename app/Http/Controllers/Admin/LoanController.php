@@ -23,6 +23,9 @@ class LoanController extends Controller
                     $request->search,
                     function ($query, $search) {
                         return $query->where('kode_peminjaman', 'LIKE', '%' . $search . '%');
+                    },
+                    function ($query) {
+                        return $query->latest('user_id');
                     }
                 )
                 ->paginate(7)
@@ -87,7 +90,9 @@ class LoanController extends Controller
      */
     public function edit(Loan $loan)
     {
-        //
+        return inertia('Loans/Edit', [
+            'loan'  => $loan->load(['user', 'books'])
+        ]);
     }
 
     /**
@@ -99,7 +104,19 @@ class LoanController extends Controller
      */
     public function update(Request $request, Loan $loan)
     {
-        //
+        $loan->status = $request->status;
+        $loan->save();
+        $booksId = $loan->load('books');
+        foreach ($booksId->books as $bki) {
+            $bkki = $bki->pivot->book_id;
+            Book::where('id', $bkki)
+                ->update([
+                    "status"    => $request->status
+                ]);
+        }
+        return redirect()
+            ->route('loan.index')
+            ->with('success', 'Loan Confirm');
     }
 
     /**

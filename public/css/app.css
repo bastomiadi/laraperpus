@@ -108,6 +108,10 @@ body .feather {
   width: 16px;
   height: 16px;
 }
+body table th,
+body table td {
+  border: none !important;
+}
 body .sidebar-sticky {
   position: relative;
   top: 0;

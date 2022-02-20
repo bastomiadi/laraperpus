@@ -49,7 +49,7 @@
                         <tr v-for="loan in loans.data" :key="loan.id">
                             <td>
                                 <div
-                                    class="badge bg-primary"
+                                    class="text-wrap"
                                     v-for="bo in loan.books"
                                     :key="bo.id"
                                 >
