@@ -20,7 +20,17 @@ copy atau rubah file env.example menjadi .env dan masukan nama database pada DB_
 php artisan key:generate
 php artisan migrate
 php artisan db:seed
+php artisan storage:link
 ```
+
+###### Account Login
+
+email : `admin@laraperpus.com`
+password : `password`
+
+###### Note
+
+Setelah semuanya sudah selesai dijalankan configurasi account email atau testing dengan menggunakan mailtrap.
 
 | Tools      | Readme                    |
 | ---------- | ------------------------- |
