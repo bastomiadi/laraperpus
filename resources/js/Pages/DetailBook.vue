@@ -1,0 +1,111 @@
+<template>
+    <Head title="Catalog Book" />
+    <Layout>
+        <section class="section-home mt-5">
+            <div class="container">
+                <div class="row justify-content-center mb-3 text-center">
+                    <div class="col-md-10">
+                        <div class="mb-3 py-4">
+                            <div class="mt-5 mb-2 h1 text-primary">
+                                Book
+                                <strong class="border-bottom">{{
+                                    book.judul
+                                }}</strong>
+                            </div>
+                            <p class="text-primary text-wrap">
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Odit, ad vel eum non quis ipsa
+                                autem modi blanditiis voluptatum dolorem,
+                                distinctio adipisci voluptas, laborum
+                                perspiciatis quia vitae labore accusamus
+                                nesciunt.
+                            </p>
+                        </div>
+                        <hr class="border-top-1 border-primary" />
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-10 mb-4" data-aos="fade-up">
+                        <div class="card border-0 shadow">
+                            <img
+                                :src="'/storage/' + book.cover"
+                                v-if="book.cover"
+                                class="card-img-top"
+                            />
+                            <img
+                                :src="imgc"
+                                v-if="!book.cover"
+                                class="card-img-top"
+                            />
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li
+                                        class="list-group-item d-flex justify-content-between"
+                                    >
+                                        <div>
+                                            {{ book.judul }} |
+                                            <strong class="badge bg-primary">{{
+                                                book.category_book.nama
+                                            }}</strong>
+                                        </div>
+                                        <div>
+                                            Lokasi
+                                            <strong class="badge bg-primary">{{
+                                                book.category_book.lokasi
+                                            }}</strong>
+                                        </div>
+                                    </li>
+                                    <li
+                                        class="list-group-item d-flex justify-content-between"
+                                    >
+                                        <div>
+                                            {{ book.editor }} |
+                                            {{ book.penerbit }}
+                                        </div>
+                                        <div>
+                                            Status :
+                                            <strong
+                                                class="text-success"
+                                                v-if="book.status"
+                                                >Tersedia</strong
+                                            >
+                                            <strong class="text-warning" v-else
+                                                >Tidak Tersedia</strong
+                                            >
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </Layout>
+</template>
+<script>
+import { Head, Link } from "@inertiajs/inertia-vue3";
+import Layout from "@/Layouts/Layout.vue";
+export default {
+    props: {
+        categories: Array,
+        book: Object,
+    },
+    data() {
+        return {
+            catbook: "",
+            imgc: "https://source.unsplash.com/600x300",
+        };
+    },
+    components: {
+        Head,
+        Layout,
+        Link,
+    },
+    methods: {
+        showCategory(slug) {
+            this.$inertia.get(route("catalog", { slug }));
+        },
+    },
+};
+</script>

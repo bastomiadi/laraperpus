@@ -19,6 +19,7 @@ Route::get('/', HomeController::class)->name('home');
 Route::get('/faq', FaqController::class)->name('faq');
 Route::get('/catalog-book', [CatalogBookController::class, 'catalog'])->name('catalog.book');
 Route::get('/catalog-book/{slug}', [CatalogBookController::class, 'category'])->name('catalog');
+Route::get('/book/{id}', [CatalogBookController::class, 'book'])->name('detail.book');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');

@@ -62,7 +62,7 @@
                         :key="book.id"
                         data-aos="fade-up"
                     >
-                        <Link href="#" class="text-decoration-none">
+                        <Link :href="route('detail.book', book.id)" class="text-decoration-none">
                             <div class="card border-0 shadow">
                                 <img
                                     :src="'/storage/' + book.cover"

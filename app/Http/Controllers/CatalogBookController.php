@@ -33,4 +33,11 @@ class CatalogBookController extends Controller
                 ->paginate(12)
         ]);
     }
+
+    public function book($id)
+    {
+        return inertia('DetailBook', [
+            'book'  => Book::with('category_book')->findOrFail($id)
+        ]);
+    }
 }
