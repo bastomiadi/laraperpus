@@ -10,7 +10,8 @@ use App\Http\Controllers\{
 use App\Http\Controllers\Admin\{
     BookController,
     CategoryBookController,
-    LoanController
+    LoanController,
+    UserController
 };
 use Illuminate\Support\Facades\Route;
 
@@ -21,13 +22,16 @@ Route::get('/catalog-book/{slug}', [CatalogBookController::class, 'category'])->
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
+
+    // Route Admin
     Route::middleware('role.admin')->prefix('admin')->group(function () {
         Route::resource('category', CategoryBookController::class);
         Route::resource('book', BookController::class);
         Route::resource('loan', LoanController::class);
+        Route::resource('user', UserController::class);
     });
 
-    // Mahasiswa
+    // Route Mahasiswa
     Route::prefix('mahasiswa')->group(function () {
         Route::get('/history', [RiwayatPeminjamanController::class, 'history'])->name('history');
         Route::get('/book', [RiwayatPeminjamanController::class, 'book'])->name('book');

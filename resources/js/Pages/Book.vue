@@ -36,10 +36,20 @@
                 <Link
                     :href="route('pinjam.create')"
                     class="btn btn-primary shadow border-0"
+                    v-if="$page.props.auth.user.status"
                 >
                     <vue-feather type="navigation"></vue-feather> Ajukan
                     Peminjaman</Link
                 >
+                <div
+                    class="alert alert-warning shadow-sm border-0"
+                    role="alert"
+                    v-else
+                >
+                    <strong>{{ $page.props.auth.user.name }}</strong> Account
+                    anda statusnya masih ditanggukan, Silahkan menunggu
+                    konfirmasi dari admin
+                </div>
             </div>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">

@@ -9,9 +9,9 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <Link
-                                :href="route('loan.index')"
+                                :href="route('user.index')"
                                 class="text-decoration-none text-primary"
-                                >Peminjaman</Link
+                                >Account</Link
                             >
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
@@ -26,10 +26,10 @@
                         <div class="card-body">
                             <table class="table table-borderless">
                                 <tr>
-                                    <td>Kode Peminjaman</td>
+                                    <td>NIM</td>
                                     <td>
                                         <strong class="fs-6">{{
-                                            mahasiswa.kode
+                                            mahasiswa.nim
                                         }}</strong>
                                     </td>
                                 </tr>
@@ -38,29 +38,27 @@
                                     <td>{{ mahasiswa.nama }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Buku</td>
+                                    <td>Email</td>
+                                    <td>{{ mahasiswa.email }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Status</td>
                                     <td>
                                         <div
-                                            v-for="bk in loan.books"
-                                            :key="bk"
-                                            class="text-wrap text-justify"
+                                            class="text-success"
+                                            v-if="mahasiswa.status"
                                         >
-                                            {{ bk.judul }}
+                                            Success
                                         </div>
+                                        <small class="text-warning" v-else>
+                                            Ditanggukan
+                                        </small>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>Tanggal Pinjam</td>
-                                    <td>{{ mahasiswa.tanggal_pinjam }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Tanggal Kembali</td>
-                                    <td>{{ mahasiswa.tanggal_kembali }}</td>
                                 </tr>
                             </table>
                             <form @submit.prevent="update" autocomplete="off">
                                 <div class="mb-3">
-                                    <div class="d-flex justify-content-start">
+                                    <div class="d-flex">
                                         <div class="me-3">
                                             <input
                                                 class="form-check-input"
@@ -76,7 +74,6 @@
                                                 Tidak
                                             </label>
                                         </div>
-
                                         <div>
                                             <input
                                                 class="form-check-input"
@@ -93,7 +90,6 @@
                                             </label>
                                         </div>
                                     </div>
-
                                     <small
                                         class="text-danger"
                                         v-if="errors.tanggal_pengembalian"
@@ -130,28 +126,26 @@ import { Head, Link } from "@inertiajs/inertia-vue3";
 export default {
     props: {
         errors: Object,
-        books: Array,
         students: Array,
-        loan: Object,
+        user: Object,
     },
     data() {
         return {
             mahasiswa: {
-                nama: this.loan.user.name,
-                kode: this.loan.kode_peminjaman,
-                tanggal_pinjam: this.loan.tanggal_pinjam,
-                tanggal_kembali: this.loan.tanggal_kembali,
-                status: this.loan.status,
+                nim: this.user.nim,
+                nama: this.user.name,
+                email: this.user.email,
+                status: this.user.status,
             },
             form: this.$inertia.form({
-                status: this.loan.status,
+                status: this.user.status,
                 _token: this.$page.props.csrf_token,
             }),
         };
     },
     methods: {
         update() {
-            this.form.put(route("loan.update", this.loan.id), {
+            this.form.put(route("user.update", this.user.id), {
                 onSuccess: () => this.form.reset(),
             });
         },

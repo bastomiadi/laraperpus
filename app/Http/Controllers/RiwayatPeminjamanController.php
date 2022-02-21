@@ -20,7 +20,9 @@ class RiwayatPeminjamanController extends Controller
 
     public function create()
     {
-
+        if (!Auth::check() || !Auth::user()->status) {
+            abort(404);
+        }
         return inertia('Pinjam', [
             "books" => Book::whereStatus(1)->get(),
         ]);

@@ -39,10 +39,11 @@ class LoanController extends Controller
      */
     public function create()
     {
-        return inertia('Loans/Create', [
-            'books' => Book::whereStatus(1)->get(),
-            'students'    => User::whereRole('Mahasiswa')->get()
-        ]);
+        return abort(404);
+        // return inertia('Loans/Create', [
+        //     'books' => Book::whereStatus(1)->get(),
+        //     'students'    => User::whereRole('Mahasiswa')->get()
+        // ]);
     }
 
     /**

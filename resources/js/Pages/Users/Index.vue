@@ -1,11 +1,11 @@
 <template>
-    <Head title="Peminjaman" />
+    <Head title="Users" />
     <Layoutadmin>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div
                 class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
             >
-                <h1 class="h2">Peminjaman</h1>
+                <h1 class="h2">Users</h1>
             </div>
             <div class="mb-2 d-flex justify-content-between">
                 <div>
@@ -22,11 +22,17 @@
                                 class="form-control"
                                 placeholder="Search"
                                 v-model="search"
-                                @keyup="searchBook"
+                                @keyup="searchUser"
                                 autofocus
                             />
                         </div>
                     </form>
+                </div>
+                <div>
+                    <Link :href="route('book.create')" class="btn btn-primary"
+                        ><vue-feather type="plus-circle"></vue-feather>
+                        Create</Link
+                    >
                 </div>
             </div>
             <flash-message />
@@ -36,47 +42,52 @@
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th>Mahasiswa</th>
-                                    <th>Buku</th>
-                                    <th>Kode Peminjaman</th>
-                                    <th>Tanggal Pinjam</th>
-                                    <th>Tanggal Kembali</th>
+                                    <th>NIM</th>
+                                    <th>Nama</th>
+                                    <th>Email</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="loan in loans.data" :key="loan.id">
+                                <tr v-for="user in users.data" :key="user.id">
                                     <td>
-                                        {{ loan.user.name }}
-                                    </td>
-                                    <td>
-                                        <div v-for="bk in loan.books" :key="bk">
-                                            {{ bk.judul }}
-                                        </div>
-                                    </td>
-                                    <td>
-                                        {{ loan.kode_peminjaman }}
-                                    </td>
-                                    <td>
-                                        {{ loan.tanggal_pinjam }}
-                                    </td>
-                                    <td>
-                                        {{ loan.tanggal_kembali }}
+                                        <Link
+                                            class="text-decoration-none d-flex align-items-center"
+                                            :href="route('user.edit', user.id)"
+                                        >
+                                            {{ user.nim }}
+                                        </Link>
                                     </td>
                                     <td>
                                         <Link
-                                            :href="route('loan.edit', loan.id)"
+                                            class="text-decoration-none d-flex align-items-center"
+                                            :href="route('user.edit', user.id)"
+                                        >
+                                            {{ user.name }}
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Link
+                                            :href="route('user.edit', user.id)"
+                                            class="text-decoration-none d-flex align-items-center"
+                                        >
+                                            {{ user.email }}
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        <Link
+                                            :href="route('user.edit', user.id)"
                                             class="text-decoration-none d-flex align-items-center"
                                         >
                                             <span
                                                 class="badge bg-success"
-                                                v-if="loan.status"
+                                                v-if="user.status"
                                                 >Success</span
                                             >
                                             <span
                                                 class="badge bg-warning"
                                                 v-else
-                                                >Pending</span
+                                                >Ditanggukan</span
                                             >
                                             <div class="float-end">
                                                 <vue-feather
@@ -87,7 +98,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="3" v-if="loans.length === 0">
+                                    <td colspan="3" v-if="users.length === 0">
                                         <div
                                             class="alert alert-danger border-0"
                                             role="alert"
@@ -98,7 +109,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <Pagination class="mt-6" :links="loans.links" />
+                        <Pagination class="mt-6" :links="users.links" />
                     </div>
                 </div>
             </div>
@@ -117,11 +128,11 @@ export default {
         };
     },
     props: {
-        loans: Object,
+        users: Object,
     },
     methods: {
-        searchBook() {
-            this.$inertia.replace(route("loan.index", { search: this.search }));
+        searchUser() {
+            this.$inertia.replace(route("user.index", { search: this.search }));
         },
     },
     components: {

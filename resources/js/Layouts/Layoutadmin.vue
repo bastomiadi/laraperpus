@@ -75,6 +75,18 @@
                         </li>
                         <li
                             class="nav-item"
+                            v-if="$page.props.is_admin.role == 'ADMIN'"
+                        >
+                            <NavLink
+                                :href="route('user.index')"
+                                :active="route().current('user*')"
+                            >
+                                <vue-feather type="users"></vue-feather>
+                                Account Mahasiswa
+                            </NavLink>
+                        </li>
+                        <li
+                            class="nav-item"
                             v-if="$page.props.is_admin.role == 'Mahasiswa'"
                         >
                             <NavLink
